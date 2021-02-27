@@ -1,0 +1,67 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1be742f9b1105a947b726b7965ba57fb, type: 3}
+  m_Name: Hill_Heightmap
+  m_EditorClassIdentifier: 
+  Auto_Update: 1
+  noise_Settings:
+    Normalise_Mode: 1
+    Scale: 50
+    Octaves: 6
+    Persistance: 0.5
+    Lacunarity: 2
+    Seed: 0
+    Offset: {x: 0, y: 0}
+  Use_Falloff: 0
+  Height_Multiplier: 50
+  Height_Curve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0.0037498474
+      value: 0.14889526
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 0.2582535
+      value: 0.14614588
+      inSlope: 0.034079432
+      outSlope: 0.034079432
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.30395722
+    - serializedVersion: 3
+      time: 0.45703435
+      value: 0.2566682
+      inSlope: 0.3490518
+      outSlope: 0.3490518
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 0.9840698
+      value: 0.40356064
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
