@@ -4,15 +4,17 @@ using UnityEngine;
 
 public class Terrain_Generator : MonoBehaviour
 {
-    const float Viwer_Move_Threshold_For_Chunk_Update = 25f;
+    const float Viwer_Move_Threshold_For_Chunk_Update = 500f;
     const float SQR_Viwer_Move_Threshold_For_Chunk_Update = Viwer_Move_Threshold_For_Chunk_Update * Viwer_Move_Threshold_For_Chunk_Update;
 
     public int Collider_LOD_Index;
     public LOD_Info[] Detail_Levels;
 
-    public Mesh_Settings mesh_Settings;
-    public Heightmap_Settings heightmap_Settings;
-    public Texture_Data texture_Settings;
+    //public Mesh_Settings mesh_Settings;
+    //public Heightmap_Settings heightmap_Settings;
+    //public Texture_Data texture_Settings;
+
+    public Map_Preview map_Preview;
 
     public Transform Viewer;
     public Transform Parent;
@@ -28,18 +30,27 @@ public class Terrain_Generator : MonoBehaviour
 
     private void Start()
     {
-        texture_Settings.Apply_To_Material(Map_Material);
-        texture_Settings.Update_Mesh_Heights(Map_Material, heightmap_Settings.Min_Height, heightmap_Settings.Max_Height);
+        /*map_Preview.Active_Mesh_Type.texture_Data.Apply_To_Material(Map_Material);
+        map_Preview.Active_Mesh_Type.texture_Data.Update_Mesh_Heights(Map_Material, map_Preview.Active_Mesh_Type.heightmap_Settings.Min_Height, map_Preview.Active_Mesh_Type.heightmap_Settings.Max_Height);
 
         float Max_View_Dst = Detail_Levels[Detail_Levels.Length - 1].Visible_Dst_Threshold;
-        Mesh_World_Size = mesh_Settings.Mesh_World_Size;
+        Mesh_World_Size = map_Preview.Active_Mesh_Type.mesh_Settings.Mesh_World_Size;
         Chunks_Visible_In_View_Dst = Mathf.RoundToInt(Max_View_Dst / Mesh_World_Size);
 
-        Update_Visible_Chunks();
+        Update_Visible_Chunks();*/
     }
 
     private void Update()
     {
+        map_Preview.Active_Mesh_Type.texture_Data.Apply_To_Material(Map_Material);
+        map_Preview.Active_Mesh_Type.texture_Data.Update_Mesh_Heights(Map_Material, map_Preview.Active_Mesh_Type.heightmap_Settings.Min_Height, map_Preview.Active_Mesh_Type.heightmap_Settings.Max_Height);
+
+        float Max_View_Dst = Detail_Levels[Detail_Levels.Length - 1].Visible_Dst_Threshold;
+        Mesh_World_Size = map_Preview.Active_Mesh_Type.mesh_Settings.Mesh_World_Size;
+        Chunks_Visible_In_View_Dst = Mathf.RoundToInt(Max_View_Dst / Mesh_World_Size);
+
+        Update_Visible_Chunks();
+
         Viewer_Position = new Vector2(Viewer.position.x, Viewer.position.z);
 
         if(Viewer_Position != Viewer_Position_Old)
@@ -83,7 +94,7 @@ public class Terrain_Generator : MonoBehaviour
                     }
                     else
                     {
-                        Terrain_Chunk New_Chunk = new Terrain_Chunk(Viewed_Chunk_Coord, heightmap_Settings, mesh_Settings, Detail_Levels, Collider_LOD_Index, transform, Viewer, Map_Material);
+                        Terrain_Chunk New_Chunk = new Terrain_Chunk(Viewed_Chunk_Coord, map_Preview.Active_Mesh_Type.heightmap_Settings, map_Preview.Active_Mesh_Type.mesh_Settings, Detail_Levels, Collider_LOD_Index, transform, Viewer, Map_Material);
                         Terrain_Chunk_Dictionary.Add(Viewed_Chunk_Coord, New_Chunk);
                         New_Chunk.On_Visibility_Changed += On_Terrain_Chunk_Visibility_Changed;
                         New_Chunk.Load();
@@ -121,3 +132,5 @@ public struct LOD_Info
         }
     }
 }
+
+

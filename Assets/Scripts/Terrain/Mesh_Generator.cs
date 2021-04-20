@@ -113,17 +113,17 @@ public class Mesh_Data
     {
         this.Use_Flat_Shading = Use_Flat_Shading;
 
-        int Num_Mesh_Ege_Vertices = (Num_Verts_Per_Line - 2) * 4 - 4;
+        int Num_Mesh_Edge_Vertices = (Num_Verts_Per_Line - 2) * 4 - 4;
         int Num_Edge_Connection_Vertices = (Skip_Increment - 1) * (Num_Verts_Per_Line - 5) / Skip_Increment * 4;
         int Num_Main_Vertices_Per_Line = (Num_Verts_Per_Line - 5) / Skip_Increment + 1;
         int Num_Main_Vertices = Num_Verts_Per_Line * Num_Verts_Per_Line;
 
-        Vertices = new Vector3[Num_Mesh_Ege_Vertices + Num_Edge_Connection_Vertices + Num_Main_Vertices];
+        Vertices = new Vector3[Num_Mesh_Edge_Vertices + Num_Edge_Connection_Vertices + Num_Main_Vertices];
         UVs = new Vector2[Vertices.Length];
 
-        int Num_Mesh_Ege_Triangles = 8 * (Num_Verts_Per_Line - 4);
+        int Num_Mesh_Edge_Triangles = 8 * (Num_Verts_Per_Line - 4);
         int Num_Main_Triangles = (Num_Main_Vertices_Per_Line - 1) * (Num_Main_Vertices_Per_Line - 1) * 2;
-        Triangles = new int[(Num_Mesh_Ege_Triangles + Num_Main_Triangles) * 3];
+        Triangles = new int[(Num_Mesh_Edge_Triangles + Num_Main_Triangles) * 3];
 
         Out_Of_Mesh_Vertices = new Vector3[Num_Verts_Per_Line * 4 - 4];
         Out_Of_Mesh_Triangles = new int[24 * (Num_Verts_Per_Line - 2)];

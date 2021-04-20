@@ -47,6 +47,7 @@ public class Terrain_Chunk
         Mesh_Filter = Mesh_Object.AddComponent<MeshFilter>();
         Mesh_Collider = Mesh_Object.AddComponent<MeshCollider>();
         Mesh_Renderer.material = material;
+        Mesh_Object.layer = 9;
 
         Mesh_Object.transform.position = new Vector3(Position.x, 0, Position.y);
         Mesh_Object.transform.parent = Parent;

@@ -6,6 +6,9 @@ TagManager:
   tags:
   - Connector
   - Road
+  - Terrain
+  - Building
+  - Building_Connection
   layers:
   - Default
   - TransparentFX
@@ -15,8 +18,8 @@ TagManager:
   - UI
   - 
   - 
-  - 
-  - 
+  - Connectors
+  - Terrain
   - 
   - 
   - 

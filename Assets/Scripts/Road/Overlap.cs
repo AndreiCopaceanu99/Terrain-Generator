@@ -7,9 +7,6 @@ public class Overlap : MonoBehaviour
     float Activ_Trigger = 0;
     BoxCollider collider;
 
-    [SerializeField]
-    Material[] materials;
-
     bool Active = true;
 
     private void Start()
@@ -34,12 +31,6 @@ public class Overlap : MonoBehaviour
         {
             Connectors con = this.GetComponentInParent<Connectors>();
             con.Connector.Remove(this.gameObject);  // Removes the connector from the list
-            if (Active == false)
-            {
-                MeshRenderer mesh = other.GetComponent<MeshRenderer>();
-                mesh.material = materials[0];
-                Debug.Log("Yep");
-            }
         }
         if (other.tag == "Connector")
         {
@@ -48,6 +39,11 @@ public class Overlap : MonoBehaviour
                 Connectors con = this.GetComponentInParent<Connectors>();
                 con.Connector.Remove(this.gameObject);  // Removes the connector from the list
             }
+        }
+        if(other.tag == "Building")
+        {
+            Connectors con = this.GetComponentInParent<Connectors>();
+            con.Connector.Remove(this.gameObject);  // Removes the connector from the list
         }
     }
 }

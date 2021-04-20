@@ -14,16 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Auto_Update: 1
   Layers:
-  - texture: {fileID: 2800000, guid: bd10304186162de43bf7bfa5095b8e86, type: 3}
-    Tint: {r: 0, g: 0.40378952, b: 1, a: 0}
-    Tint_Strenght: 0.73
-    Start_Height: 0
-    Blend_Strength: 0
-    Texture_Scale: 10
   - texture: {fileID: 2800000, guid: 804004b9272668c40bad440bdf4ddc54, type: 3}
     Tint: {r: 0.8018868, g: 0.71203816, b: 0.27612138, a: 0}
     Tint_Strenght: 0
-    Start_Height: 0.02
+    Start_Height: 0
     Blend_Strength: 0.02
     Texture_Scale: 10
   - texture: {fileID: 2800000, guid: d742efc3baa9cf74b92eab7a41670de9, type: 3}

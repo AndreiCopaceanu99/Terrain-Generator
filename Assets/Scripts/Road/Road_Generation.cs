@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Road_Generation : MonoBehaviour
 {
@@ -9,20 +10,23 @@ public class Road_Generation : MonoBehaviour
     int Road_Type;          // The value of the active road
     int New_Road_Type;      // The value of the road that is getting create
 
-    GameObject[] Road_Type_Game;    // The road type in the game world
+    public GameObject[] Road_Type_Game;    // The road type in the game world
 
     [SerializeField]
     GameObject Turtle;      // Visual representation of the process
     [SerializeField]
     Camera Cam;             // Camera
+
+    [SerializeField]
+    Transform Camera_Position;
     
     [SerializeField]
     int Max_Lenght;
 
-    GameObject[] Sections;  // Stores all the road sections
-    int Active_Road=0;      
+    public List<GameObject> Sections = new List<GameObject>();
+    public int Active_Road = 0;      
 
-    int Current_Lenght = 1;
+    public int Current_Lenght = 1;
     GameObject Current_Section; // The prefab that is going to be created
 
     GameObject[] GO;        // The active road section in the game world
@@ -30,41 +34,95 @@ public class Road_Generation : MonoBehaviour
     [SerializeField]
     bool Step_By_Step;      // The way update goes, manual or automatic
 
+    [SerializeField]
+    GameObject Building_Prefab;
+
+    [SerializeField]
+    public Transform Hitpoint;
+
+    public bool Ready;
+
+    [SerializeField]
+    GameObject Select_Terrain_UI;
+
+    [SerializeField]
+    GameObject Terrain_Preview;
+    [SerializeField]
+    GameObject Actual_Terrain;
+
+    [SerializeField]
+    Slider Road_Sections_Slider;
+
     // Start is called before the first frame update
     void Start()
     {
-        Sections = new GameObject[Max_Lenght];
-        Road_Type_Game = new GameObject[4];
-        Road_Type = 0;
-        Current_Section = Roads[Road_Type];
-        Sections[0] = Current_Section;
-        GO = new GameObject[Max_Lenght];
-        GO[0]=Instantiate(Current_Section, new Vector3(0, 5f, 0), Quaternion.identity);
-        Road_Type_Game[0] = GO[0];
-        Turtle.transform.position = Current_Section.transform.position;
-        Turtle.transform.rotation = Current_Section.transform.rotation;
-        Cam.transform.position = new Vector3(Turtle.transform.position.x, 500f, Turtle.transform.position.z);
-        Get_Connectors(GO[Active_Road]);
-        Active_Road++;
+        Ready = false;
+        Select_Terrain_UI.SetActive(true);
+        Terrain_Preview.SetActive(true);
+        Actual_Terrain.SetActive(false);
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (Step_By_Step)       // Manual process
+        if(Road_Type_Game.Length == 0 && Input.GetMouseButtonDown(0) && Ready)
         {
-            if (Input.GetKeyDown(KeyCode.A) && Current_Lenght < Max_Lenght)
+            int layer_mask = LayerMask.GetMask("Terrain");
+
+            RaycastHit hit;
+            Ray ray = Cam.ScreenPointToRay(Input.mousePosition);
+            // Does the ray intersect any objects excluding the player layer
+            if (Physics.Raycast(ray, out hit, Mathf.Infinity, layer_mask))
             {
-                Get_Connectors(GO[Active_Road]);
-                Active_Road++;
+                Hitpoint.position = hit.point;
             }
+
+            Camera_Position.position = new Vector3(Hitpoint.position.x, 500f, Hitpoint.position.z - 300);
+            Cam.transform.localEulerAngles = new Vector3(45, 0, 0);
+
+            Max_Lenght = (int)Road_Sections_Slider.value;
+
+            Road_Type_Game = new GameObject[4];
+            Road_Type = 0;
+            Current_Section = Roads[Road_Type];
+            Sections.Add(Current_Section);
+            GO = new GameObject[Max_Lenght];
+            GO[0] = Instantiate(Current_Section, Hitpoint.position + new Vector3(0, 1f, 0), Quaternion.identity);
+            Road_Type_Game[0] = GO[0];
+            Turtle.transform.position = Current_Section.transform.position;
+            Turtle.transform.rotation = Current_Section.transform.rotation;
+            Get_Connectors(GO[Active_Road]);
+            Active_Road++;
         }
-        else              // Automatic process
+
+        if (Road_Type_Game.Length != 0)
         {
-            if (Current_Lenght < Max_Lenght)
+            if (Step_By_Step)       // Manual process
             {
-                Get_Connectors(GO[Active_Road]);
-                Active_Road++;
+                if (Input.GetKeyDown(KeyCode.A) && Current_Lenght < Max_Lenght)
+                {
+                    Get_Connectors(GO[Active_Road]);
+                    Active_Road++;
+                }
+            }
+            else              // Automatic process
+            {
+                if (Current_Lenght < Max_Lenght)
+                {
+                    if (GO[Active_Road] == null)
+                    {
+                        Active_Road++;
+                    }
+
+                    Get_Connectors(GO[Active_Road]);
+
+                    if (GO[Active_Road].name != Road_Type_Game[0].name)
+                    {
+                        Buildings(GO[Active_Road]);
+                    }
+
+                    Active_Road++;
+                }
             }
         }
     }
@@ -72,38 +130,38 @@ public class Road_Generation : MonoBehaviour
     void Get_Connectors(GameObject Sect)
     {
         Connectors Con = Sect.GetComponentInChildren<Connectors>();
-        Transform Section_Mesh = Sect.gameObject.transform.GetChild(0);
-        foreach(GameObject a in Con.Connector)  // Goes through all the connectors of the road section
+        if (!Con.Ready)
         {
-            if (Current_Lenght < Max_Lenght)
+            Active_Road--;
+        }
+        if (Con.Ready && Con.Connector.Count != 0)
+        {
+            foreach (GameObject a in Con.Connector)  // Goes through all the connectors of the road section
             {
-                if (a.transform.position.z > Section_Mesh.position.z)
+                if (Current_Lenght < Max_Lenght)
                 {
-                    Turtle.transform.position = a.transform.position + new Vector3(0, 0, -7.3f);
+                    Turtle.transform.position = a.transform.position;
+                    Turtle.transform.rotation = a.transform.rotation;
+                    Extend_Road();
                 }
-                if (a.transform.position.z < Section_Mesh.position.z)
-                {
-                    Turtle.transform.position = a.transform.position + new Vector3(0, 0, 7.3f);
-                }
-                if (a.transform.position.x > Section_Mesh.position.x)
-                {
-                    Turtle.transform.position = a.transform.position + new Vector3(-7.3f, 0, 0);
-                }
-                if (a.transform.position.x < Section_Mesh.position.x)
-                {
-                    Turtle.transform.position = a.transform.position + new Vector3(7.3f, 0, 0);
-                }
-
-                //Debug.Log(a.transform.position + " / " + Section_Mesh.transform.position);
-                if(a.transform.position.x != Section_Mesh.position.x && a.transform.position.z != Section_Mesh.position.z)
-                {
-                    Debug.Log(a.transform.position + " / " + Section_Mesh.position + " / " + Sect.name);
-                }
-                Turtle.transform.rotation = a.transform.rotation;
-                Extend_Road();
             }
         }
         Road_Type = 0;
+    }
+
+    void Buildings(GameObject Sect)
+    {
+        Spawn_Buildings Buildings = Sect.GetComponent<Spawn_Buildings>();
+        
+        if(Buildings.Spawning_Points.Count != 0)
+        {
+            foreach(GameObject a in Buildings.Spawning_Points)
+            {
+                GameObject GO = Instantiate(Building_Prefab, a.transform.position - new Vector3(0, 1f, 0), Quaternion.identity);
+                Renderer renderer = GO.GetComponent<Renderer>();
+                renderer.material.color = new Color(Random.Range(0f, 1f), Random.Range(0f, 1f), Random.Range(0f, 1f));
+            }
+        }
     }
 
     void Extend_Road()  // Checks what type of road is the active section
@@ -142,19 +200,28 @@ public class Road_Generation : MonoBehaviour
 
         if(Road_Type==2)
         {
-            if (GO[Active_Road].name == Road_Type_Game[Road_Type].name)
+            if (Road_Type_Game[Road_Type] == null)
             {
                 New_Road_Type = 1;
                 Current_Section = Roads[New_Road_Type];
-                if (GO[Active_Road] == Road_Type_Game[New_Road_Type])
-                {
-                    Current_Section = Roads[1];
-                }
                 Build_Section(Current_Section);
             }
             else
             {
-                Road_Type++;
+                if (GO[Active_Road].name == Road_Type_Game[Road_Type].name)
+                {
+                    New_Road_Type = 1;
+                    Current_Section = Roads[New_Road_Type];
+                    if (GO[Active_Road] == Road_Type_Game[New_Road_Type])
+                    {
+                        Current_Section = Roads[1];
+                    }
+                    Build_Section(Current_Section);
+                }
+                else
+                {
+                    Road_Type++;
+                }
             }
         }
 
@@ -174,7 +241,7 @@ public class Road_Generation : MonoBehaviour
     {
         if (New_Road_Type == 2)
         {
-            GO[Current_Lenght] = Instantiate(Section, Turtle.transform.position, Quaternion.Euler(0, (Turtle.transform.eulerAngles.y - 180f), 0));
+            GO[Current_Lenght] = Instantiate(Section, Turtle.transform.position, Quaternion.Euler(0, (Turtle.transform.eulerAngles.y + 270f), 0));
         }
         else
         {
@@ -187,7 +254,16 @@ public class Road_Generation : MonoBehaviour
                 Road_Type_Game[New_Road_Type] = GO[Current_Lenght]; // Adds a new road section from the game world in the array
             }
         }
-        Sections[Current_Lenght] = Section;
+        //Sections[Current_Lenght] = Section;
+        Sections.Add(Section);
         Current_Lenght++;
+    }
+
+    public void Is_Ready()
+    {
+        Select_Terrain_UI.SetActive(false);
+        Terrain_Preview.SetActive(false);
+        Actual_Terrain.SetActive(true);
+        Ready = true;
     }
 }

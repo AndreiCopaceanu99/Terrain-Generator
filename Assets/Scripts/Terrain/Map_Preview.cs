@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Map_Preview : MonoBehaviour
 {
@@ -15,7 +16,7 @@ public class Map_Preview : MonoBehaviour
     public Terrain_Type terrain_Type;
     [SerializeField]
     Mesh_Info[] mesh_Infos;
-    Mesh_Info Active_Mesh_Type;
+    public Mesh_Info Active_Mesh_Type;
 
     public Material Terrain_Material;
 
@@ -24,9 +25,46 @@ public class Map_Preview : MonoBehaviour
 
     public bool Auto_Update;
 
+    [SerializeField]
+    Slider Terrain;
+
+    [SerializeField]
+    Dropdown Terrain_Type_UI;
+
+    private void Update()
+    {
+        for (int i = 0; i < mesh_Infos.Length; i++)
+        {
+            if (Terrain_Type_UI.options[Terrain_Type_UI.value].text == mesh_Infos[i].Terrain_Name)
+            {
+                Active_Mesh_Type = mesh_Infos[i];
+            }
+        }
+
+        Active_Mesh_Type.heightmap_Settings.noise_Settings.Seed = (int)Terrain.value;
+
+        Active_Mesh_Type.texture_Data.Apply_To_Material(Terrain_Material);
+
+        Active_Mesh_Type.texture_Data.Update_Mesh_Heights(Terrain_Material, Active_Mesh_Type.heightmap_Settings.Min_Height, Active_Mesh_Type.heightmap_Settings.Max_Height);
+        Heightmap heightmap = Heightmap_Generator.Generate_Heightmap(Active_Mesh_Type.mesh_Settings.Num_Verts_Per_Line, Active_Mesh_Type.mesh_Settings.Num_Verts_Per_Line, Active_Mesh_Type.heightmap_Settings, Vector2.zero);
+
+        if (draw_Mode == Draw_Mode.Noise_Map)
+        {
+            Draw_Texture(Texture_Generator.Texture_From_Heightmap(heightmap));
+        }
+        else if (draw_Mode == Draw_Mode.Mesh)
+        {
+            Draw_Mesh(Mesh_Generator.Generate_Terrain_Mesh(heightmap.Values, Active_Mesh_Type.mesh_Settings, Editor_Preview_LOD));
+        }
+        else if (draw_Mode == Draw_Mode.Falloff_Map)
+        {
+            Draw_Texture(Texture_Generator.Texture_From_Heightmap(new Heightmap(Falloff_Generator.Generate_Falloff_Map(Active_Mesh_Type.mesh_Settings.Num_Verts_Per_Line), 0, 1)));
+        }
+    }
+
     public void Draw_Map_In_Editor()
     {
-        for(int i = 0; i < mesh_Infos.Length; i++)
+        for (int i = 0; i < mesh_Infos.Length; i++)
         {
             if(terrain_Type.ToString() == mesh_Infos[i].Terrain_Name)
             {
@@ -106,7 +144,7 @@ public class Map_Preview : MonoBehaviour
 }
 
 [System.Serializable]
-struct Mesh_Info
+public struct Mesh_Info
 {
     public string Terrain_Name;
     public Mesh_Settings mesh_Settings;

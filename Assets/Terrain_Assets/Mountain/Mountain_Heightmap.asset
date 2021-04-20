@@ -22,13 +22,13 @@ MonoBehaviour:
     Seed: 0
     Offset: {x: 0, y: 0}
   Use_Falloff: 0
-  Height_Multiplier: 50
+  Height_Multiplier: 541.7
   Height_Curve:
     serializedVersion: 2
     m_Curve:
     - serializedVersion: 3
-      time: -0.002166748
-      value: 0.2996521
+      time: 0.0366275
+      value: 0.14552045
       inSlope: 0
       outSlope: 0
       tangentMode: 0
@@ -36,17 +36,35 @@ MonoBehaviour:
       inWeight: 0
       outWeight: 0
     - serializedVersion: 3
-      time: 0.52446294
-      value: 0.34741223
-      inSlope: 0.3490518
-      outSlope: 0.3490518
+      time: 0.32720995
+      value: 0.1481179
+      inSlope: -0.0436321
+      outSlope: -0.0436321
       tangentMode: 0
       weightedMode: 0
       inWeight: 0.33333334
-      outWeight: 0.33333334
+      outWeight: 0.19091454
     - serializedVersion: 3
-      time: 1.0022583
-      value: 0.9998741
+      time: 0.6088958
+      value: 0.5505583
+      inSlope: 1.9978513
+      outSlope: 1.9978513
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.31225798
+    - serializedVersion: 3
+      time: 0.7979386
+      value: 0.7208796
+      inSlope: 0.696981
+      outSlope: 0.696981
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.20011912
+    - serializedVersion: 3
+      time: 0.9980279
+      value: 0.8487437
       inSlope: 0
       outSlope: 0
       tangentMode: 0
