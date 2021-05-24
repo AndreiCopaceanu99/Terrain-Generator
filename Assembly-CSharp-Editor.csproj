@@ -9,7 +9,7 @@
     <ProductVersion>10.0.20506</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <RootNamespace></RootNamespace>
-    <ProjectGuid>{550A8FAD-F05D-3A67-CAB5-87E431F03137}</ProjectGuid>
+    <ProjectGuid>{4D6F17A6-5D16-6550-7F17-F7040DF12CF7}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <AssemblyName>Assembly-CSharp-Editor</AssemblyName>
@@ -260,23 +260,26 @@
     <Reference Include="UnityEditor.WindowsStandalone.Extensions">
       <HintPath>C:/Program Files/Unity/Hub/Editor/2019.4.9f1/Editor/Data/PlaybackEngines/WindowsStandaloneSupport/UnityEditor.WindowsStandalone.Extensions.dll</HintPath>
     </Reference>
+    <Reference Include="UnityEditor.Android.Extensions">
+      <HintPath>C:/Program Files/Unity/Hub/Editor/2019.4.9f1/Editor/Data/PlaybackEngines/AndroidPlayer/UnityEditor.Android.Extensions.dll</HintPath>
+    </Reference>
     <Reference Include="SyntaxTree.VisualStudio.Unity.Bridge">
       <HintPath>C:/Program Files (x86)/Microsoft Visual Studio Tools for Unity/16.0/Editor/SyntaxTree.VisualStudio.Unity.Bridge.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Analytics.Editor">
-      <HintPath>H:/Final Year Project/ProcGen/Library/PackageCache/com.unity.analytics@3.3.5/Unity.Analytics.Editor.dll</HintPath>
+      <HintPath>H:/Final Year Project/Git/Terrain-Generator/Library/PackageCache/com.unity.analytics@3.3.5/Unity.Analytics.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Analytics.Tracker">
-      <HintPath>H:/Final Year Project/ProcGen/Library/PackageCache/com.unity.analytics@3.3.5/Unity.Analytics.Tracker.dll</HintPath>
+      <HintPath>H:/Final Year Project/Git/Terrain-Generator/Library/PackageCache/com.unity.analytics@3.3.5/Unity.Analytics.Tracker.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Analytics.StandardEvents">
-      <HintPath>H:/Final Year Project/ProcGen/Library/PackageCache/com.unity.analytics@3.3.5/AnalyticsStandardEvents/Unity.Analytics.StandardEvents.dll</HintPath>
+      <HintPath>H:/Final Year Project/Git/Terrain-Generator/Library/PackageCache/com.unity.analytics@3.3.5/AnalyticsStandardEvents/Unity.Analytics.StandardEvents.dll</HintPath>
     </Reference>
     <Reference Include="UnityEditor.Purchasing">
-      <HintPath>H:/Final Year Project/ProcGen/Library/PackageCache/com.unity.purchasing@2.0.6/Editor/UnityEditor.Purchasing.dll</HintPath>
+      <HintPath>H:/Final Year Project/Git/Terrain-Generator/Library/PackageCache/com.unity.purchasing@2.0.6/Editor/UnityEditor.Purchasing.dll</HintPath>
     </Reference>
     <Reference Include="nunit.framework">
-      <HintPath>H:/Final Year Project/ProcGen/Library/PackageCache/com.unity.ext.nunit@1.0.0/net35/unity-custom/nunit.framework.dll</HintPath>
+      <HintPath>H:/Final Year Project/Git/Terrain-Generator/Library/PackageCache/com.unity.ext.nunit@1.0.0/net35/unity-custom/nunit.framework.dll</HintPath>
     </Reference>
     <Reference Include="mscorlib">
       <HintPath>C:/Program Files/Unity/Hub/Editor/2019.4.9f1/Editor/Data/MonoBleedingEdge/lib/mono/4.7.1-api/mscorlib.dll</HintPath>
@@ -633,86 +636,86 @@
       <HintPath>C:/Program Files/Unity/Hub/Editor/2019.4.9f1/Editor/Data/MonoBleedingEdge/lib/mono/unityscript/Boo.Lang.dll</HintPath>
     </Reference>
     <Reference Include="UnityEditor.TestRunner">
-      <HintPath>H:/Final Year Project/ProcGen/Library/ScriptAssemblies/UnityEditor.TestRunner.dll</HintPath>
+      <HintPath>H:/Final Year Project/Git/Terrain-Generator/Library/ScriptAssemblies/UnityEditor.TestRunner.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.TestRunner">
-      <HintPath>H:/Final Year Project/ProcGen/Library/ScriptAssemblies/UnityEngine.TestRunner.dll</HintPath>
+      <HintPath>H:/Final Year Project/Git/Terrain-Generator/Library/ScriptAssemblies/UnityEngine.TestRunner.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Timeline.Editor">
-      <HintPath>H:/Final Year Project/ProcGen/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
+      <HintPath>H:/Final Year Project/Git/Terrain-Generator/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.Monetization">
-      <HintPath>H:/Final Year Project/ProcGen/Library/ScriptAssemblies/UnityEngine.Monetization.dll</HintPath>
+      <HintPath>H:/Final Year Project/Git/Terrain-Generator/Library/ScriptAssemblies/UnityEngine.Monetization.dll</HintPath>
     </Reference>
     <Reference Include="com.unity.multiplayer-hlapi.Editor">
-      <HintPath>H:/Final Year Project/ProcGen/Library/ScriptAssemblies/com.unity.multiplayer-hlapi.Editor.dll</HintPath>
+      <HintPath>H:/Final Year Project/Git/Terrain-Generator/Library/ScriptAssemblies/com.unity.multiplayer-hlapi.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.VSCode.Editor">
-      <HintPath>H:/Final Year Project/ProcGen/Library/ScriptAssemblies/Unity.VSCode.Editor.dll</HintPath>
+      <HintPath>H:/Final Year Project/Git/Terrain-Generator/Library/ScriptAssemblies/Unity.VSCode.Editor.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.Advertisements">
-      <HintPath>H:/Final Year Project/ProcGen/Library/ScriptAssemblies/UnityEngine.Advertisements.dll</HintPath>
+      <HintPath>H:/Final Year Project/Git/Terrain-Generator/Library/ScriptAssemblies/UnityEngine.Advertisements.dll</HintPath>
     </Reference>
     <Reference Include="Unity.TextMeshPro.Editor">
-      <HintPath>H:/Final Year Project/ProcGen/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
+      <HintPath>H:/Final Year Project/Git/Terrain-Generator/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.UI">
-      <HintPath>H:/Final Year Project/ProcGen/Library/ScriptAssemblies/UnityEngine.UI.dll</HintPath>
+      <HintPath>H:/Final Year Project/Git/Terrain-Generator/Library/ScriptAssemblies/UnityEngine.UI.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Timeline">
-      <HintPath>H:/Final Year Project/ProcGen/Library/ScriptAssemblies/Unity.Timeline.dll</HintPath>
+      <HintPath>H:/Final Year Project/Git/Terrain-Generator/Library/ScriptAssemblies/Unity.Timeline.dll</HintPath>
     </Reference>
     <Reference Include="Unity.CollabProxy.Editor">
-      <HintPath>H:/Final Year Project/ProcGen/Library/ScriptAssemblies/Unity.CollabProxy.Editor.dll</HintPath>
+      <HintPath>H:/Final Year Project/Git/Terrain-Generator/Library/ScriptAssemblies/Unity.CollabProxy.Editor.dll</HintPath>
     </Reference>
     <Reference Include="com.unity.multiplayer-weaver.Editor">
-      <HintPath>H:/Final Year Project/ProcGen/Library/ScriptAssemblies/com.unity.multiplayer-weaver.Editor.dll</HintPath>
+      <HintPath>H:/Final Year Project/Git/Terrain-Generator/Library/ScriptAssemblies/com.unity.multiplayer-weaver.Editor.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.XR.LegacyInputHelpers">
-      <HintPath>H:/Final Year Project/ProcGen/Library/ScriptAssemblies/UnityEngine.XR.LegacyInputHelpers.dll</HintPath>
+      <HintPath>H:/Final Year Project/Git/Terrain-Generator/Library/ScriptAssemblies/UnityEngine.XR.LegacyInputHelpers.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Rider.Editor">
-      <HintPath>H:/Final Year Project/ProcGen/Library/ScriptAssemblies/Unity.Rider.Editor.dll</HintPath>
+      <HintPath>H:/Final Year Project/Git/Terrain-Generator/Library/ScriptAssemblies/Unity.Rider.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.2D.Sprite.Editor">
-      <HintPath>H:/Final Year Project/ProcGen/Library/ScriptAssemblies/Unity.2D.Sprite.Editor.dll</HintPath>
+      <HintPath>H:/Final Year Project/Git/Terrain-Generator/Library/ScriptAssemblies/Unity.2D.Sprite.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.2D.Tilemap.Editor">
-      <HintPath>H:/Final Year Project/ProcGen/Library/ScriptAssemblies/Unity.2D.Tilemap.Editor.dll</HintPath>
+      <HintPath>H:/Final Year Project/Git/Terrain-Generator/Library/ScriptAssemblies/Unity.2D.Tilemap.Editor.dll</HintPath>
     </Reference>
     <Reference Include="UnityEditor.SpatialTracking">
-      <HintPath>H:/Final Year Project/ProcGen/Library/ScriptAssemblies/UnityEditor.SpatialTracking.dll</HintPath>
+      <HintPath>H:/Final Year Project/Git/Terrain-Generator/Library/ScriptAssemblies/UnityEditor.SpatialTracking.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.SpatialTracking">
-      <HintPath>H:/Final Year Project/ProcGen/Library/ScriptAssemblies/UnityEngine.SpatialTracking.dll</HintPath>
+      <HintPath>H:/Final Year Project/Git/Terrain-Generator/Library/ScriptAssemblies/UnityEngine.SpatialTracking.dll</HintPath>
     </Reference>
     <Reference Include="Unity.TextMeshPro">
-      <HintPath>H:/Final Year Project/ProcGen/Library/ScriptAssemblies/Unity.TextMeshPro.dll</HintPath>
+      <HintPath>H:/Final Year Project/Git/Terrain-Generator/Library/ScriptAssemblies/Unity.TextMeshPro.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Analytics.DataPrivacy">
-      <HintPath>H:/Final Year Project/ProcGen/Library/ScriptAssemblies/Unity.Analytics.DataPrivacy.dll</HintPath>
+      <HintPath>H:/Final Year Project/Git/Terrain-Generator/Library/ScriptAssemblies/Unity.Analytics.DataPrivacy.dll</HintPath>
     </Reference>
     <Reference Include="UnityEditor.XR.LegacyInputHelpers">
-      <HintPath>H:/Final Year Project/ProcGen/Library/ScriptAssemblies/UnityEditor.XR.LegacyInputHelpers.dll</HintPath>
+      <HintPath>H:/Final Year Project/Git/Terrain-Generator/Library/ScriptAssemblies/UnityEditor.XR.LegacyInputHelpers.dll</HintPath>
     </Reference>
     <Reference Include="UnityEditor.UI">
-      <HintPath>H:/Final Year Project/ProcGen/Library/ScriptAssemblies/UnityEditor.UI.dll</HintPath>
+      <HintPath>H:/Final Year Project/Git/Terrain-Generator/Library/ScriptAssemblies/UnityEditor.UI.dll</HintPath>
     </Reference>
     <Reference Include="com.unity.multiplayer-hlapi.Runtime">
-      <HintPath>H:/Final Year Project/ProcGen/Library/ScriptAssemblies/com.unity.multiplayer-hlapi.Runtime.dll</HintPath>
+      <HintPath>H:/Final Year Project/Git/Terrain-Generator/Library/ScriptAssemblies/com.unity.multiplayer-hlapi.Runtime.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="Assembly-CSharp-firstpass.csproj">
-      <Project>{545C8128-A0C5-FC85-76DB-177D9804B9FA}</Project>
+      <Project>{523643B9-EF3E-DAB8-D3E9-3D82B79E2170}</Project>
       <Name>Assembly-CSharp-firstpass</Name>
     </ProjectReference>
     <ProjectReference Include="Assembly-CSharp.csproj">
-      <Project>{39EC7A08-22B2-5FB6-1D4F-0BB2E81527FB}</Project>
+      <Project>{E2E6D4DF-2C77-78FF-054B-01E142401A59}</Project>
       <Name>Assembly-CSharp</Name>
     </ProjectReference>
     <ProjectReference Include="Assembly-CSharp-Editor-firstpass.csproj">
-      <Project>{D1F3FC42-2679-B0A9-37F6-51BD6714C8CB}</Project>
+      <Project>{8CE8D32C-CFEC-72A4-7E28-7273BA53D735}</Project>
       <Name>Assembly-CSharp-Editor-firstpass</Name>
     </ProjectReference>
   </ItemGroup>

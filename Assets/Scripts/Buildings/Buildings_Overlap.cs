@@ -8,7 +8,7 @@ public class Buildings_Overlap : MonoBehaviour
     BoxCollider collider;
 
     bool Active = true;
-
+    
     private void Start()
     {
         collider = GetComponent<BoxCollider>();

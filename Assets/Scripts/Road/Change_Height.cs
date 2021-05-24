@@ -42,7 +42,7 @@ public class Change_Height : MonoBehaviour
             Set_Height();
         }
 
-        if (connectors.Connector.Count != 0)
+        if (connectors.Connector.Count == 1)
         {
             if (!connectors.Ready)
             {
@@ -63,7 +63,7 @@ public class Change_Height : MonoBehaviour
         if (overlap.Hitpoint.position.y != transform.position.y)
         {
             Height = transform.position.y - overlap.Hitpoint.position.y - 4f;
-            /*if (Height >= -20 && Height <= 20)
+            if (Height >= -5 && Height <= 5)
             {
                 for (int i = 0; i < vertices.Length; i++)
                 {
@@ -75,18 +75,20 @@ public class Change_Height : MonoBehaviour
             }
             else
             {
-                road_Generation.Sections.Remove(gameObject);
-                //road_Generation.Active_Road++;
-                Destroy(gameObject);
-            }*/
+                Connectors con = this.GetComponent<Connectors>();
+                if (con.Connector.Count == 1)
+                {
+                    con.Connector.Remove(con.Connector[0]);
+                }
+            }
 
-            for (int i = 0; i < vertices.Length; i++)
+            /*for (int i = 0; i < vertices.Length; i++)
             {
                 if (i == 0 || i == 1 || i == 2 || i == 3 || i == 4 || i == 7 || i == 13 || i == 14 || i == 16 || i == 17 || i == 22 || i == 23)
                 {
                     vertices[i] = new Vector3(mesh.vertices[i].x, mesh.vertices[i].y - Height, mesh.vertices[i].z);
                 }
-            }
+            }*/
         }
         mesh.vertices = vertices;
         Ready = true;
