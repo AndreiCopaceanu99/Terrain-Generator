@@ -27,7 +27,20 @@ public class Buildings_Overlap : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (Active == false)
+        if (other.tag == "Building_Connection")
+        {
+            if (Active == false)
+            {
+                Spawn_Buildings con = this.GetComponentInParent<Spawn_Buildings>();
+                con.Spawning_Points.Remove(this.gameObject);  // Removes the connector from the list
+            }
+        }
+        if (other.tag == "Building")
+        {
+            Spawn_Buildings con = this.GetComponentInParent<Spawn_Buildings>();
+            con.Spawning_Points.Remove(this.gameObject);  // Removes the connector from the list
+        }
+        if (other.tag == "Road")
         {
             Spawn_Buildings con = this.GetComponentInParent<Spawn_Buildings>();
             con.Spawning_Points.Remove(this.gameObject);  // Removes the connector from the list

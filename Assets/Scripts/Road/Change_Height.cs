@@ -63,7 +63,7 @@ public class Change_Height : MonoBehaviour
         if (overlap.Hitpoint.position.y != transform.position.y)
         {
             Height = transform.position.y - overlap.Hitpoint.position.y - 4f;
-            if (Height >= -5 && Height <= 5)
+            if (Height >= -7 && Height <= 7)
             {
                 for (int i = 0; i < vertices.Length; i++)
                 {

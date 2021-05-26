@@ -159,6 +159,7 @@ GameObject:
   - component: {fileID: 5117734322559781922}
   - component: {fileID: 8639719968428942032}
   - component: {fileID: 2650285857709370585}
+  - component: {fileID: 2235830620260568575}
   m_Layer: 0
   m_Name: Spawn_Building1
   m_TagString: Building_Connection
@@ -205,6 +206,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: af0023a1b4d57694c815a408aaf93911, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!54 &2235830620260568575
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3937281505157648992}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 126
+  m_CollisionDetection: 0
 --- !u!1 &7530528976110121539
 GameObject:
   m_ObjectHideFlags: 0
@@ -216,6 +233,7 @@ GameObject:
   - component: {fileID: 6931522193710153085}
   - component: {fileID: 3957522723433275083}
   - component: {fileID: 8542901232212709333}
+  - component: {fileID: 2283811672556893138}
   m_Layer: 0
   m_Name: Spawn_Building2
   m_TagString: Building_Connection
@@ -262,6 +280,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: af0023a1b4d57694c815a408aaf93911, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!54 &2283811672556893138
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7530528976110121539}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 126
+  m_CollisionDetection: 0
 --- !u!1 &8847688951535038768
 GameObject:
   m_ObjectHideFlags: 0

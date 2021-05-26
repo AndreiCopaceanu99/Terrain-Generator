@@ -40,7 +40,8 @@ public class Terrain_Chunk
 
         Sample_Centre = Coord * mesh_Settings.Mesh_World_Size / mesh_Settings.Mesh_Scale;
         Vector2 Position = Coord * mesh_Settings.Mesh_World_Size;
-        Bounds = new Bounds(Position, Vector2.one * mesh_Settings.Mesh_World_Size);
+        //Bounds = new Bounds(Position, Vector2.one * mesh_Settings.Mesh_World_Size);
+        Bounds = new Bounds(Position, new Vector2(50, 50) * mesh_Settings.Mesh_World_Size);
 
         Mesh_Object = new GameObject("Terrain Chunk");
         Mesh_Renderer = Mesh_Object.AddComponent<MeshRenderer>();

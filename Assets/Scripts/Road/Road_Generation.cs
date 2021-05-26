@@ -127,7 +127,9 @@ public class Road_Generation : MonoBehaviour
                 {
                     if (GO[Active_Road] == null)
                     {
-                        Active_Road++;
+                        //Active_Road++;
+                        Current_Lenght = Max_Lenght;
+                        return;
                     }
 
                     Get_Connectors(GO[Active_Road]);
@@ -145,11 +147,8 @@ public class Road_Generation : MonoBehaviour
 
     void Get_Connectors(GameObject Sect)
     {
-        //Connectors Con = Sect.GetComponentInChildren<Connectors>();\
-        //Debug.Log(Sect.name + Sect.GetComponent<Connectors>());
         if (Sect.GetComponent<Connectors>() != null)
         {
-            Debug.Log("Is good");
             Con = Sect.GetComponent<Connectors>();
             if (!Con.Ready)
             {
