@@ -20,6 +20,8 @@ public class Change_Height : MonoBehaviour
 
     MeshCollider Mesh_Collider;
 
+    public bool Is_On_Water;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -32,6 +34,7 @@ public class Change_Height : MonoBehaviour
             Height_Detector = connectors.Connector[0];
             overlap = Height_Detector.GetComponent<Detect_Height>();
         }
+        Is_On_Water = false;
     }
 
     // Update is called once per frame
@@ -60,35 +63,34 @@ public class Change_Height : MonoBehaviour
     void Set_Height()
     {
         vertices = mesh.vertices;
-        if (overlap.Hitpoint.position.y != transform.position.y)
+        if (overlap.Hitpoint.position.y <= 5f)
         {
-            Height = transform.position.y - overlap.Hitpoint.position.y - 4f;
-            if (Height >= -7 && Height <= 7)
+            Is_On_Water = true;
+        }
+        else
+        {
+            if (overlap.Hitpoint.position.y != transform.position.y)
             {
-                for (int i = 0; i < vertices.Length; i++)
+                Height = transform.position.y - overlap.Hitpoint.position.y - 4f;
+                if (Height >= -7 && Height <= 7)
                 {
-                    if (i == 0 || i == 1 || i == 2 || i == 3 || i == 4 || i == 7 || i == 13 || i == 14 || i == 16 || i == 17 || i == 22 || i == 23)
+                    for (int i = 0; i < vertices.Length; i++)
                     {
-                        vertices[i] = new Vector3(mesh.vertices[i].x, mesh.vertices[i].y - Height, mesh.vertices[i].z);
+                        if (i == 0 || i == 1 || i == 2 || i == 3 || i == 4 || i == 7 || i == 13 || i == 14 || i == 16 || i == 17 || i == 22 || i == 23)
+                        {
+                            vertices[i] = new Vector3(mesh.vertices[i].x, mesh.vertices[i].y - Height, mesh.vertices[i].z);
+                        }
+                    }
+                }
+                else
+                {
+                    Connectors con = this.GetComponent<Connectors>();
+                    if (con.Connector.Count == 1)
+                    {
+                        con.Connector.Remove(con.Connector[0]);
                     }
                 }
             }
-            else
-            {
-                Connectors con = this.GetComponent<Connectors>();
-                if (con.Connector.Count == 1)
-                {
-                    con.Connector.Remove(con.Connector[0]);
-                }
-            }
-
-            /*for (int i = 0; i < vertices.Length; i++)
-            {
-                if (i == 0 || i == 1 || i == 2 || i == 3 || i == 4 || i == 7 || i == 13 || i == 14 || i == 16 || i == 17 || i == 22 || i == 23)
-                {
-                    vertices[i] = new Vector3(mesh.vertices[i].x, mesh.vertices[i].y - Height, mesh.vertices[i].z);
-                }
-            }*/
         }
         mesh.vertices = vertices;
         Ready = true;

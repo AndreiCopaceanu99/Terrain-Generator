@@ -205,10 +205,20 @@ public class Road_Generation : MonoBehaviour
         {
             if (GO[Active_Road].name == Road_Type_Game[Road_Type].name)
             {
-                New_Road_Type = Random.Range(0, 15);
-                if(New_Road_Type>=4)
+                Change_Height Height_Detector = GO[Active_Road].GetComponent<Change_Height>();
+                if (Height_Detector.Is_On_Water)
                 {
                     New_Road_Type = 1;
+                    Spawn_Buildings Buildings = GO[Active_Road].GetComponent<Spawn_Buildings>();
+                    Buildings.Spawning_Points.Clear();
+                }
+                else
+                {
+                    New_Road_Type = Random.Range(0, 15);
+                    if (New_Road_Type >= 4)
+                    {
+                        New_Road_Type = 1;
+                    }
                 }
                 Current_Section = Roads[New_Road_Type];
                 Build_Section(Current_Section);
