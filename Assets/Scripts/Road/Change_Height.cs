@@ -63,7 +63,7 @@ public class Change_Height : MonoBehaviour
     void Set_Height()
     {
         vertices = mesh.vertices;
-        if (overlap.Hitpoint.position.y <= 5f)
+        if (overlap.Hitpoint.position.y <= 2f)
         {
             Is_On_Water = true;
         }

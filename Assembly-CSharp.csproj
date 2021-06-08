@@ -691,6 +691,9 @@
     <Reference Include="Unity.TextMeshPro">
       <HintPath>H:/Final Year Project/Git/Terrain-Generator/Library/ScriptAssemblies/Unity.TextMeshPro.dll</HintPath>
     </Reference>
+    <Reference Include="Unity.Performance.Profile-Analyzer.Editor">
+      <HintPath>H:/Final Year Project/Git/Terrain-Generator/Library/ScriptAssemblies/Unity.Performance.Profile-Analyzer.Editor.dll</HintPath>
+    </Reference>
     <Reference Include="Unity.Analytics.DataPrivacy">
       <HintPath>H:/Final Year Project/Git/Terrain-Generator/Library/ScriptAssemblies/Unity.Analytics.DataPrivacy.dll</HintPath>
     </Reference>
